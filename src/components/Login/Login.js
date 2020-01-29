@@ -1,28 +1,35 @@
 import React from 'react'
-// import Button from '../Button/Button'
 import { 
   Form, Button
 } from 'react-bootstrap'
-import Axios from 'axios'
-class Login extends React.Component{
+import Axios from 'axios';
+import 'mdbreact/dist/css/mdb.css'
+import { Container,MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBView} from 'mdbreact';
+
+import { Redirect } from 'react-router-dom';
+class Login extends React.Component {
 
 constructor(){
   super()
 
   this.state = {
 
-    username:'',
-    password:''
-
+    email:'',
+   
+    password:'',
+   
+    redirect:false
 
   }
 }
 
-usernameChangeHandler = (event) => {
+emailChangeHandler = (event) => {
 
-  this.setState({username: event.target.value})
+/*if(event.target.value.length < 6){
+  this.setState({validationMessage:'Username Cannot be less than 6 chars '})
+}*/
 
-
+  this.setState({email: event.target.value})
 }
 
 passwordChangeHandler = (event) => {
@@ -31,8 +38,14 @@ this.setState({password: event.target.value})
   
 }
 
-fromSubmitHnadler = (e) => {
+formSubmitHandler = (e) => {
   e.preventDefault()
+
+
+
+// use API call to post the data 
+//fetch byt default JS
+// Axios external package
 
 
 // use API call to post the data 
@@ -49,50 +62,94 @@ var headers = {
 'Content-Type':'application/json'
 
 }
-  Axios.post('http://localhost:3023/registration', this.state , headers)
+  Axios.post('http://localhost:3000/users/login', this.state , headers)
   .then(function(response){
+    console.log(response.data);
+    localStorage.setItem("user_token",response.data.userToken)
 
   })
   .catch(function(err){
 
   })
 
+
+var data = {
+
+  email:this.state.email,
+  password:this.state.password
+
+}
+
+
+  // console.log(this.state)
 }
 
 render(){
 
+//what to render based in state
   return(
-    <div  
-style={{width:"500px",
-backgroundColor: "lightblue",
- padding: "10px",
-margin:"auto"}}
 
->
+// if(this.state.redirect == true){ 
 
-<Form onSubmit={this.fromSubmitHnadler}>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Username </Form.Label>
-    <Form.Control type="text" placeholder="Enter username" value={this.state.username} onChange={this.usernameChangeHandler} />
-  
-  </Form.Group>
+//   //actual redirect work
 
-    <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Enter password" value={this.state.password} onChange={this.passwordChangeHandler} />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
+// }
+<Container>
+<div>
+ <MDBContainer style={{
+  paddingLeft:"320px",
+   backgroundImage:
+                'url(assets/fan.jpg)'
+ }}>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody>
+              <form onSubmit={this.formSubmitHandler} >
+                <p className="h4 text-center py-4">Sign up</p>
+                <div className="grey-text">
+                <MDBInput
+                    label="Enter your email" value={this.state.email} onChange={this.emailChangeHandler}
+                    icon="envolope"
+                    group
+                    type="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+    
+                  
+                  <MDBInput
+                    label="Your password" value={this.state.password} onChange={this.passwordChangeHandler}
+                    icon="lock"
+                    group
+                    type="password"
+                    validate
+                  />
+                 {/* <MDBInput
+                    label="Confirm password"
+                    icon="lock"
+                    group
+                    type="password"
+                    validate
+                  />*/}
+                </div>
+                <div className="text-center py-4 mt-3">
+                  <MDBBtn color="cyan" type="submit">
+                    Login
+                  </MDBBtn>
+                </div>
+              </form>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
 
+    
+      </div>
+      </Container>
+  );
+}};
 
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-</div>
-  )
-}
-}
-
-export default Login
+export default Login;

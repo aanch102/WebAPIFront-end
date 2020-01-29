@@ -3,6 +3,8 @@ import {
   Form, Button
 } from 'react-bootstrap'
 import Axios from 'axios';
+import 'mdbreact/dist/css/mdb.css'
+import { Container,MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBView} from 'mdbreact';
 import { Redirect } from 'react-router-dom';
 class Registration extends React.Component {
 
@@ -11,24 +13,34 @@ constructor(){
 
   this.state = {
 
-    username:'',
+    email:'',
+    fullname:'',
     password:'',
+    address:'',
     validationMessage:'',
     redirect:false
 
   }
 }
 
-usernameChangeHandler = (event) => {
+emailChangeHandler = (event) => {
 
-if(event.target.value.length < 6){
+/*if(event.target.value.length < 6){
   this.setState({validationMessage:'Username Cannot be less than 6 chars '})
+}*/
+
+  this.setState({email: event.target.value})
 }
 
-  this.setState({username: event.target.value})
+fullnameChangeHandler = (event) => {
 
+this.setState({fullname: event.target.value})
+  
+}
+addressChangeHandler = (event) => {
 
-
+this.setState({address: event.target.value})
+  
 }
 
 passwordChangeHandler = (event) => {
@@ -54,13 +66,15 @@ var headers = {
 
 var data = {
 
-  username:this.state.username,
+  email:this.state.email,
+  fullname:this.state.fullname,
+  address:this.state.address,
   password:this.state.password
 
 }
 
 //mfetch method XMLHTTPREquest
-  Axios.post('http://localhost:3023/registration', data , headers)
+  Axios.post('http://localhost:3000/users/signup', data , headers)
 
 .then( (response) => {
   console.log(response.data.status);
@@ -101,59 +115,84 @@ return (
 
   return(
 
-// if(this.state.redirect == true){ 
+//if(this.state.redirect == true){ 
 
 //   //actual redirect work
 
 // }
+<Container>
+<div>
+ <MDBContainer style={{
+  paddingLeft:"320px",
+   backgroundImage:
+                'url(assets/fan.jpg)'
+ }}>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody>
+              <form onSubmit={this.formSubmitHandler} >
+                <p className="h4 text-center py-4">Sign up</p>
+                <div className="grey-text">
+                <MDBInput
+                    label="Enter your email" value={this.state.email} onChange={this.emailChangeHandler}
+                    icon="envolope"
+                    group
+                    type="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  <MDBInput 
+                    label=" Enter Fullname" value={this.state.fullname} onChange={this.fullnameChangeHandler}
+                    icon="user"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  <MDBInput
+                    label="Enter your Address" value={this.state.address} onChange={this.addressChangeHandler}
+                    icon="home"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  
+                  <MDBInput
+                    label="Your password" value={this.state.password} onChange={this.passwordChangeHandler}
+                    icon="lock"
+                    group
+                    type="password"
+                    validate
+                  />
+                 {/* <MDBInput
+                    label="Confirm password"
+                    icon="lock"
+                    group
+                    type="password"
+                    validate
+                  />*/}
+                </div>
+                <div className="text-center py-4 mt-3">
+                  <MDBBtn color="cyan" type="submit">
+                    Register
+                  </MDBBtn>
+                </div>
+              </form>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
 
-
-<div  
-style={{width:"500px",
-backgroundColor: "lightblue",
- padding: "10px",
-margin:"auto"}}
-
->
-
-   
-      
-
-<Form onSubmit={this.formSubmitHandler}>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email </Form.Label>
-    <Form.Control type="text" placeholder="Enter Email" value={this.state.username} onChange={this.usernameChangeHandler} />
-    <Form.Text className="text-muted">
-      {this.state.validationMessage}
-    </Form.Text>
-  </Form.Group>
-   <Form.Group controlId="formBasicEmail">
-    <Form.Label>Fullname </Form.Label>
-    <Form.Control type="text" placeholder="Enter Fullname" />
     
-  </Form.Group>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Address </Form.Label>
-    <Form.Control type="text" placeholder="Enter address" />
-  </Form.Group>
+      </div>
+      </Container>
+  );
+}};
 
-
-    <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Enter password" value={this.state.password} onChange={this.passwordChangeHandler} />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
-
-
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-</div>
-  )
-}
-}
-
-export default Registration
+export default Registration;
