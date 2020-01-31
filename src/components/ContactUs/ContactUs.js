@@ -65,10 +65,10 @@ var data = {
 
 //mfetch method XMLHTTPREquest
   Axios.post('http://localhost:3000/feedback/addFeedback', data , headers)
-
+    
 .then( (response) => {
   console.log(response.data.status);
-  if(response.status === 201){
+  if(response.status === 200){
 
     this.setState({redirect:true})
 
@@ -86,23 +86,8 @@ var data = {
 
   // console.log(this.state)
 }
-
+ 
 render(){
-
-//what to render based in state
-/*
-if(this.state.redirect){
-
-return (
-  <Redirect to='/login' />
-  )
-
-// toast message
-
-}
-*/
-
-
   return(
 
 <section className="my-5">

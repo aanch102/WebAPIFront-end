@@ -41,18 +41,6 @@ this.setState({password: event.target.value})
 formSubmitHandler = (e) => {
   e.preventDefault()
 
-
-
-// use API call to post the data 
-//fetch byt default JS
-// Axios external package
-
-
-// use API call to post the data 
-//fetch byt default JS
-// Axios external package
-
-
   console.log(this.state) // this sate js object
   // 1st url 
   // 2nd data JS object

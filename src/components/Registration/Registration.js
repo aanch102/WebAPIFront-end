@@ -17,11 +17,23 @@ constructor(){
     fullname:'',
     password:'',
     address:'',
+    image:'',
     validationMessage:'',
     redirect:false
 
   }
 }
+ handleFileSelected = event => {
+        this.setState({image: event.target.files[0]})
+        //for image url
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+            this.setState({imagePreviewUrl: reader.result});
+        }
+
+        reader.readAsDataURL(event.target.files[0])
+    }
 
 emailChangeHandler = (event) => {
 
@@ -49,6 +61,7 @@ this.setState({password: event.target.value})
   
 }
 
+
 formSubmitHandler = (e) => {
   e.preventDefault()
 
@@ -63,13 +76,25 @@ var headers = {
 // not 'x-form-urlencded '
 
 }
+const fd = new FormData();
+            const imageName = this
+                .state
+                .image
+                .name
+                .toLowerCase();
+            fd.append('imageFile', this.state.image, imageName);
+            Axios
+                .post('http://localhost:3000/upload', fd)
+                .then(res => {
+                    console.log(res);
 
 var data = {
 
   email:this.state.email,
   fullname:this.state.fullname,
   address:this.state.address,
-  password:this.state.password
+  password:this.state.password,
+  image:'imageFile-' + imageName
 
 }
 
@@ -92,7 +117,7 @@ var data = {
 
 })
 
-
+})
 
   // console.log(this.state)
 }
@@ -160,6 +185,14 @@ return (
                     type="password"
                     validate
                   />
+                    <MDBInput
+                    type="file"
+                                    inputProps={{
+                                    accept: 'image/*'
+                                }}
+                                    name="avatar"
+                                    onChange={this.handleFileSelected}
+                                    ref={fileInput => this.fileInput = fileInput}/>
                  {/* <MDBInput
                     label="Confirm password"
                     icon="lock"

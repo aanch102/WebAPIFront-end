@@ -1,4 +1,4 @@
-
+/*
 import Axios from 'axios';
 import 'mdbreact/dist/css/mdb.css'
 import React from "react";
@@ -157,4 +157,4 @@ The Times’s staff critics give their choices of the best fiction and nonfictio
   );
 }
 
-export default BlogPage;
+export default BlogPage;*/
