@@ -78,7 +78,7 @@ var data = {
 
 .then( (response) => {
   console.log(response.data.status);
-  if(response.status === 201){
+  if(response.status === 200){
 
     this.setState({redirect:true})
 
@@ -110,16 +110,7 @@ return (
 // toast message
 
 }
-
-
-
   return(
-
-//if(this.state.redirect == true){ 
-
-//   //actual redirect work
-
-// }
 <Container>
 <div>
  <MDBContainer style={{

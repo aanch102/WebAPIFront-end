@@ -98,7 +98,8 @@ render(){
             <MDBView hover className="rounded z-depth-2 mb-4" waves>
               <img
                 className="img-fluid"
-                src="assets/"
+                height="550px"
+                src="assets/fan.jpg"
                 alt=""
               />
               <MDBMask overlay="white-slight" />
@@ -106,23 +107,29 @@ render(){
             <a href="#!" className="pink-text">
               <h6 className="font-weight-bold mb-3">
                 <MDBIcon icon="map" className="pr-2" />
-                Adventure
+               Best Selling Books
               </h6>
             </a>
             <h4 className="font-weight-bold mb-3">
-              <strong>Title of the news</strong>
             </h4>
             <p>
               by <a href="#!" className="font-weight-bold">Billy Forester</a>,
               15/07/2018
             </p>
             <p className="dark-grey-text">
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
-              nihil impedit quo minus id quod maxime placeat facere possimus
-              voluptas.
+               In the literary world, it has been a year of big, bold ambition.
+              Novelists have stretched their canvases — writing a sentence that 
+              runs for a thousand pages; charting the fate of three families in 
+              Africa across four generations. Nonfiction writers have made 
+              riveting narrative from sprawling, difficult material: 
+              The Irish Troubles, the nuclear
+              disaster at Chernobyl, the history of the Lakota tribe.
+             And memoirists have confronted harrowing and profound subjects:
             </p>
             <MDBBtn color="pink" rounded size="md">
+            <Link to ='/aboutus'>
               Read more
+              </Link>
             </MDBBtn>
           </MDBCol>
           <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">

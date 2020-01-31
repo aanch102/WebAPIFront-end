@@ -13,30 +13,30 @@ constructor(){
 
   this.state = {
 
-    Fullname:'',
+    fullname:'',
     email:'',
     message:'',
-  
     redirect:false
 
   }
 }
 
-usernameChangeHandler = (event) => {
+fullnameChangeHandler = (event) => {
 
-if(event.target.value.length < 6){
-  this.setState({validationMessage:'Username Cannot be less than 6 chars '})
+//if(event.target.value.length < 6)
+
+  this.setState({fullname: event.target.value})
 }
 
-  this.setState({username: event.target.value})
+emailChangeHandler = (event) => {
 
-
-
+this.setState({email: event.target.value})
+  
 }
 
-passwordChangeHandler = (event) => {
+messageChangeHandler = (event) => {
 
-this.setState({password: event.target.value})
+this.setState({message: event.target.value})
   
 }
 
@@ -64,7 +64,7 @@ var data = {
 }
 
 //mfetch method XMLHTTPREquest
-  Axios.post('http://localhost:3023/registration', data , headers)
+  Axios.post('http://localhost:3000/feedback/addFeedback', data , headers)
 
 .then( (response) => {
   console.log(response.data.status);
@@ -90,7 +90,7 @@ var data = {
 render(){
 
 //what to render based in state
-
+/*
 if(this.state.redirect){
 
 return (
@@ -100,7 +100,7 @@ return (
 // toast message
 
 }
-
+*/
 
 
   return(
@@ -120,10 +120,11 @@ return (
               <p className="dark-grey-text">
                 We'll write rarely, but only the best content.
               </p>
+              <form onSubmit={this.formSubmitHandler}>
               <div className="md-form">
                 <MDBInput
                   icon="user"
-                  label="Your name"
+                  label="Your name" value={this.state.fullname} onChange={this.fullnameChangeHandler}
                   iconClass="grey-text"
                   type="text"
                   id="form-name"
@@ -132,7 +133,7 @@ return (
               <div className="md-form">
                 <MDBInput
                   icon="envelope"
-                  label="Your email"
+                  label="Your email" value={this.state.email} onChange={this.emailChangeHandler}
                   iconClass="grey-text"
                   type="text"
                   id="form-email"
@@ -141,7 +142,7 @@ return (
               <div className="md-form">
                 <MDBInput
                   icon="tag"
-                  label="Subject"
+                  label="Subject" value={this.state.message} onChange={this.messageChangeHandler}
                   iconClass="grey-text"
                   type="text"
                   id="form-subject"
@@ -150,6 +151,7 @@ return (
               <div className="text-center">
                 <MDBBtn color="light-blue">Submit</MDBBtn>
               </div>
+              </form>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
@@ -189,12 +191,6 @@ return (
         </MDBCol>
       </MDBRow>
     </section>
-
-   
-
-         
-       
-
 
     )
 }

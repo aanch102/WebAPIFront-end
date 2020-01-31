@@ -13,15 +13,12 @@ import{
   Route
 
 } from 'react-router-dom'
-
-
-
 import Login from './components/Login/Login' 
 import Registration from './components/Registration/Registration' 
 import ContactUs from './components/ContactUs/ContactUs' 
 import Aboutus from './components/Aboutus/Aboutus' 
 import Carts from './components/Carts/Carts' 
-
+import Book from './components/Books/Book' 
 import Home from './components/Home/Home' 
 
 import Carousel from 'react-bootstrap/Carousel'
@@ -34,6 +31,7 @@ class Index extends React.Component{
 
         Footer = () => {
          return ( 
+          <Router>
           <MDBFooter color="indigo" className="font-small pt-0">
       <MDBContainer  style={{
         marginTop:"150px"
@@ -46,7 +44,9 @@ class Index extends React.Component{
           </MDBCol>
           <MDBCol md="2" className="b-3">
             <h6 className="title font-weight-bold">
-              <a href="#!">Products</a>
+            <Link to ='/books'>
+              Products
+              </Link>
             </h6>
           </MDBCol>
           <MDBCol md="2" className="b-3">
@@ -108,14 +108,13 @@ class Index extends React.Component{
         </MDBContainer>
       </div>
     </MDBFooter>
+    </Router>
       
      )
 
     }
 
-  render(){
-   
-      
+  render(){ 
      return (
 
       <Container>
@@ -147,8 +146,12 @@ class Index extends React.Component{
               <MDBNavLink as={Link} to="/contactUs">Contact us</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
+              <MDBNavLink as={Link} to="/books">books</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
               <MDBNavLink as={Link} to="/carts">Your Cart</MDBNavLink>
             </MDBNavItem>
+
           </MDBNavbarNav>
           
         </MDBCollapse>
@@ -164,7 +167,6 @@ class Index extends React.Component{
               < Home/>
             </Route>
 
-            <Route path="/home" component={Home}/>
           </Switch>
           
           <Switch>
@@ -209,7 +211,14 @@ class Index extends React.Component{
               < Carts/>
 
             </Route>
+
             <Route path="/carts" component={Carts}/>
+             <Route exact path="/books">
+
+              < Book/>
+
+            </Route>
+            <Route path="/books" component={Book}/>
 
           </Switch>
            
