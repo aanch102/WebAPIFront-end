@@ -86,8 +86,7 @@ render(){
 <div>
  <MDBContainer style={{
   paddingLeft:"320px",
-   backgroundImage:
-                'url(assets/fan.jpg)'
+  
  }}>
       <MDBRow>
         <MDBCol md="6">
