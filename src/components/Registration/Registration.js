@@ -139,14 +139,16 @@ return (
 <Container>
 <div>
  <MDBContainer style={{
-  paddingLeft:"320px",
+  
    backgroundImage:
                 'url(assets/fan.jpg)'
  }}>
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
-            <MDBCardBody>
+            <MDBCardBody style ={{
+
+            }}>
               <form onSubmit={this.formSubmitHandler} >
                 <p className="h4 text-center py-4">Sign up</p>
                 <div className="grey-text">

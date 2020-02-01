@@ -1,4 +1,4 @@
-/*import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn } from "mdbreact";
 import{
 
@@ -93,4 +93,4 @@ class Book extends Component{
   );
 }
 }
-export default Book;*/
+export default Book;

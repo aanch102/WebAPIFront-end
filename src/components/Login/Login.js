@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap'
 import Axios from 'axios';
 import 'mdbreact/dist/css/mdb.css'
-import { Container,MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBView} from 'mdbreact';
+import { Container,MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBView,MDBMedia} from 'mdbreact';
 
 import { Redirect } from 'react-router-dom';
 class Login extends React.Component {
@@ -85,7 +85,7 @@ render(){
 <Container>
 <div>
  <MDBContainer style={{
-  paddingLeft:"320px",
+  
   
  }}>
       <MDBRow>
@@ -103,9 +103,7 @@ render(){
                     validate
                     error="wrong"
                     success="right"
-                  />
-    
-                  
+                  /> 
                   <MDBInput
                     label="Your password" value={this.state.password} onChange={this.passwordChangeHandler}
                     icon="lock"
@@ -113,13 +111,7 @@ render(){
                     type="password"
                     validate
                   />
-                 {/* <MDBInput
-                    label="Confirm password"
-                    icon="lock"
-                    group
-                    type="password"
-                    validate
-                  />*/}
+                
                 </div>
                 <div className="text-center py-4 mt-3">
                   <MDBBtn color="cyan" type="submit">
@@ -132,8 +124,7 @@ render(){
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-
-    
+  
       </div>
       </Container>
   );

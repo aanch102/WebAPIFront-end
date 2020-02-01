@@ -163,7 +163,7 @@ class Index extends React.Component{
 
    <Switch>
 
-            <Route exact path="/home">
+            <Route exact path="/">
               < Home/>
             </Route>
 

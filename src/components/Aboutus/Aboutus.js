@@ -2,10 +2,12 @@
 import Axios from 'axios';
 import 'mdbreact/dist/css/mdb.css'
 import React from "react";
-import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn } from "mdbreact";
+import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn} from "mdbreact";
 
 const BlogPage = () => {
   return (
+
+    <div>
     <MDBCard className="my-5 px-5 pb-5">
       <MDBCardBody>
         <h2 className="h1-responsive font-weight-bold text-center my-5">
@@ -154,6 +156,79 @@ The Times’s staff critics give their choices of the best fiction and nonfictio
         </MDBRow>
       </MDBCardBody>
     </MDBCard>
+
+   <section className="my-5">
+      <h2 className="h1-responsive font-weight-bold text-center my-5">
+        Why is it so great?
+      </h2>
+      <p className="lead grey-text w-responsive text-center mx-auto mb-5">
+        Here you can find different verieties of books in a buget.
+         Shopping for books online helps you find
+         the best possible price for just about any book you want. 
+         If you’re in the market for rare, 
+         collectible or autographed books, it’s much cheaper
+         and faster to search online than it would be to call up local 
+         used and independent bookstores that carry these types of items.
+      </p>
+
+      <MDBRow>
+        <MDBCol md="4" className="md-0 mb-5">
+          <MDBRow>
+            <MDBCol lg="2" md="3" size="2">
+              <MDBIcon icon="bullhorn" size="2x" className="blue-text" />
+            </MDBCol>
+            <MDBCol lg="10" md="9" size="10">
+              <h4 className="font-weight-bold">Marketing</h4>
+              <p className="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam.
+              </p>
+              <MDBBtn color="primary" size="sm">
+                Learn more
+              </MDBBtn>
+            </MDBCol>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol md="4" className="md-0 mb-5">
+          <MDBRow>
+            <MDBCol lg="2" md="3" size="2">
+              <MDBIcon icon="cogs" size="2x" className="pink-text" />
+            </MDBCol>
+            <MDBCol lg="10" md="9" size="10">
+              <h4 className="font-weight-bold">Customization</h4>
+              <p className="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam.
+              </p>
+              <MDBBtn color="pink" size="sm">
+                Learn more
+              </MDBBtn>
+            </MDBCol>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol md="4" className="md-0 mb-5">
+          <MDBRow>
+            <MDBCol lg="2" md="3" size="2">
+              <MDBIcon icon="tachometer-alt" size="2x" className="purple-text" />
+            </MDBCol>
+            <MDBCol lg="10" md="9" size="10">
+              <h4 className="font-weight-bold">Support</h4>
+              <p className="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam.
+              </p>
+              <MDBBtn color="purple" size="sm">
+                Learn more
+              </MDBBtn>
+            </MDBCol>
+          </MDBRow>
+        </MDBCol>
+      </MDBRow>
+    </section>
+      </div>
   );
 }
 
